@@ -32,6 +32,7 @@ function countDown(count){
 function populateButton(player) {
   if (win(player)) {
     $('#countdown').text(`${player.name} wins!!!`);
+
   }
   if (player === player1) {
     var position = player1.position;
@@ -48,8 +49,10 @@ function populateButton(player) {
 
 function win(player) {
   if ((player.position === 6) && (player === player1)) {
+    $(window).off();
     return player1;
   } else if ((player.position === 6) && (player === player2)) {
+    $(window).off();
     return player2;
   }
 }
