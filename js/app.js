@@ -13,10 +13,20 @@ $(document).ready(function() {
     $('.box').html("");
   });
 
-  //create players objects
+  //create players object constructor
+  function Player(name) {
+    this.name = name;
+    this.counter = 0;
+  }
 
   //start game
-
+  function startGame() {
+    var player1 = new Player("P1");
+    var player2 = new Player("P2");
+    console.log(player1);
+    console.log(player2);
+  }
+  startGame();
   //movement controller
 
   //win logic
