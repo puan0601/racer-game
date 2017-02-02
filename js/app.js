@@ -23,12 +23,16 @@ function countDown(count){
      $('#countdown').text(str);
      setTimeout(function() {countDown(count-1); },1000);
    } else {
+     $('#countdown').text('GO');
      populateButton(player1);
      populateButton(player2);
    }
 }
 
 function populateButton(player) {
+  if (win(player)) {
+    $('#countdown').text(`${player.name} wins!!!`);
+  }
   if (player === player1) {
     var position = player1.position;
     var move = generateRandomKey(player);
@@ -40,25 +44,24 @@ function populateButton(player) {
     $('#b'+position).text(move);
     player2.position++
   }
-
 }
 
-//movement controller
+function win(player) {
+  if ((player.position === 6) && (player === player1)) {
+    return player1;
+  } else if ((player.position === 6) && (player === player2)) {
+    return player2;
+  }
+}
 
-//win logic
-console.log('js loaded');
 // wait for the DOM to finish loading
 $(document).ready(function() {
-  $('#reset').click(function resetHandler() {
-    $('.box').html("");
-  });
 
   $(window).keydown(function handleEvent(event) {
     var key = event.keyCode;
-    console.log(key);
     var pos1 = player1.position - 1;
     var pos2 = player2.position - 1;
-    console.log(pos1, pos2);
+
     if (key === player1.key[pos1]) {
       $('#a'+pos1).css('background', 'blue');
       populateButton(player1);
@@ -68,16 +71,18 @@ $(document).ready(function() {
     }
   });
 
+  $('#reset').click(function resetHandler() {
+    $('.box').text("");
+    $('.box').css("background-image", 'url("https://i.imgur.com/gXjMHCz.jpg")');
+    $('#countdown').text("");
+
+  });
+
   $('#start').click(function buttonHandler() {
     //intentionally removed "var" to put players into global scope.
-    player1 = new Player("P1");
-    player2 = new Player("P2");
+    player1 = new Player("Player 1");
+    player2 = new Player("Player 2");
     countDown(3);
-    if (player1.position === 6) {
-      $('#countdown').text("Player 1 WINS!!!!!!!!");
-    } else if (player2.position === 6) {
-      $('#countdown').text("Player 2 WINS!!!!!!!!");
-    }
 
   });
 });
