@@ -3,10 +3,6 @@ body {
   color: white;
 }
 
-#board {
-  margin-top: 10px;
-}
-
 .p1, .p2 {
   border: 1px solid black;
   height: 150px;
@@ -14,4 +10,12 @@ body {
 
 #spacer {
   height: 30px;
+}
+
+#p1board {
+  margin-top: 30px;
+}
+
+#start {
+  margin-right: 10px;
 }
