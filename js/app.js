@@ -13,6 +13,12 @@ $(document).ready(function() {
     $('.box').html("");
   });
 
+  $(window).keydown(function handleEvent(event) {
+    var key = event.keyCode;
+    console.log(key);
+
+  });
+
   //create players object constructor
   function Player(name) {
     this.name = name;
@@ -27,6 +33,8 @@ $(document).ready(function() {
     console.log(player2);
   }
   startGame();
+
+
   //movement controller
 
   //win logic
