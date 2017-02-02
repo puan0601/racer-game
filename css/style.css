@@ -7,6 +7,11 @@ body {
   margin-top: 10px;
 }
 
-.box {
+.p1, .p2 {
   border: 1px solid black;
   height: 150px;
+}
+
+#spacer {
+  height: 30px;
+}
